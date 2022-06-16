@@ -1,3 +1,8 @@
+const { init } = require('express/lib/application')
+const fs = require('fs')
+const generateMarkdown = require('./utils/generateMarkdown')
+
+
 const inquirer = require ('inquirer')
 const generalQuestions = [
     {
@@ -75,10 +80,42 @@ function start() {
             }
         }
     )
+    
 }
 
 start()
 
 //create functions
+
+//function to add an engineer
+function addEngineer() {
+
+}
+//function to add an intern
+function addIntern() {
+
+}
+//function to add a manager
+function addManager() {
+
+}
+
+
+
 // search how to create a variable using a class
+
+
+
 // import all the classes, engineer, intern and manager
+function init() {
+    return inquirer.prompt(generalQuestions)
+    .then(function(data){
+        console.log(data)
+    //file name and data to be passed to the file 
+    fs.writeFileSync("./dist/index.html", generateMarkdown(data))
+    })
+}
+
+// function call to initialize app 
+
+init()

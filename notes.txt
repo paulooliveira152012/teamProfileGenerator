@@ -1,0 +1,7 @@
+node:
+
+1- GET ACCESS TO THE FILE SYSTEM PROPERTIES 
+const fs = require('fs')
+
+2- CALL FILE SYSTEM, writeFileSync PROPERTY, two parameters -> the name and type of the file + the content of the file
+fs.writeFileSync("Hello.txt", )
