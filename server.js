@@ -246,29 +246,45 @@ function addEngineer() {
     inquirer.prompt([
         {
         type: "input",
-        name: "name",
-        message: "What's the engineer's name?",
+        name: "github",
+        message: "What's your github account?",
     },
+])
+.then(answers => {
+    const engineerAnswer = new Engineer(
+        answers.name, 
+        answers.id, 
+        answers.email, 
+        answers.github
+        );
 
 
-    {
-        type: "input",
-        name: "id",
-        message: "What's your Id",
-    },  
-]
-// .then(answers => {
-//     const example = new Example(answers.Name, answers.Id, answers.Email, answers.github);}
+    }
 )
-
 }
 
 function addIntern() {
-
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "school",
+                message: "What's the name of your School?"
+            }
+        ]
+    )
 }
 
 function addManager() {
-
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "officeNumber",
+                message: "What's your office number?"
+            }
+        ]
+    )
 }
 
 
