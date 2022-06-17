@@ -176,10 +176,12 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
+const Manager = require('./lib/Manager')
+const Engineer = require('./lib/Engineer')
 
 
 function start() {
-    inquirer.prompt(
+    inquirer.prompt([
         {
         type: "input",
         name: "name",
@@ -209,7 +211,8 @@ function start() {
             "Add a Manager",
             "Exit",
         ]
-        }
+        }]
+
     )
 
     .then (
@@ -229,6 +232,8 @@ function start() {
             }
         }
     )
+
+    var answers = []
 }
 // TODO: Create an array of questions for user input
 const questions = [
@@ -237,7 +242,25 @@ const questions = [
 
 function addEngineer() {
     //prompt users with engineer based questions
-    
+
+    inquirer.prompt([
+        {
+        type: "input",
+        name: "name",
+        message: "What's the engineer's name?",
+    },
+
+
+    {
+        type: "input",
+        name: "id",
+        message: "What's your Id",
+    },  
+]
+// .then(answers => {
+//     const example = new Example(answers.Name, answers.Id, answers.Email, answers.github);}
+)
+
 }
 
 function addIntern() {
@@ -259,6 +282,6 @@ function init() {
 }
 
 // Function call to initialize app
-init();
+// init();
 
 start()
