@@ -1,4 +1,5 @@
 // const { init } = require('express/lib/application')
+const { type } = require('express/lib/response')
 const fs = require('fs')
 const inquirer = require ('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
@@ -9,8 +10,9 @@ const questions = [
     {
         type: "input",
         name: "name",
-        message: "What's the employee's name?",
+        message: "What's your name?",
     },
+
 
     {
         type: "input",
@@ -25,14 +27,7 @@ const questions = [
     },
 ]
 
-const managerQuestion = [
-    {
-        type: "input",
-        name: "officeNumber",
-        message: "What's your office number?",
-    },
-]
-
+// Questions for each choice of addition
 const engineerQuestion = [
     {
         type: "input",
@@ -49,6 +44,16 @@ const internQuestion = [
     }
 ]
 
+const managerQuestion = [
+    {
+        type: "input",
+        name: "officeNumber",
+        message: "What's your office number?",
+    },
+]
+
+
+//function to start the app
 function start() {
     return inquirer.prompt(
         {
@@ -63,6 +68,7 @@ function start() {
             ]
 
         }
+    
     )
     .then (
         function(userInput){
@@ -86,10 +92,17 @@ function start() {
 start()
 
 //create functions
-
+// lookup: arrays, iquirer package, method push
 //function to add an engineer
-function addEngineer() {
-    
+function addEngineer(userInput) {
+   inquirer.prompt(
+       {
+        type: "input",
+        name: "github",
+        message: "What's your github?",
+    }
+   )
+   console.log("yes")
 }
 //function to add an intern
 function addIntern() {
