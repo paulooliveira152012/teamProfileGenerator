@@ -178,13 +178,6 @@ const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
 
 
-function start() {
-    return inquirer.prompt (
-        
-    )
-}
-
-
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -216,11 +209,8 @@ const questions = [
             "Add a Manager",
             "Exit",
         ]
-    },
+        },
 ]
-
-    
-
 
 // TODO: Create a function to write README file
 // function writeToFile(fileName, data) {}
@@ -236,4 +226,3 @@ function init() {
 
 // Function call to initialize app
 init();
-
