@@ -1,35 +1,36 @@
-const { init } = require('express/lib/application')
+// const { init } = require('express/lib/application')
 const fs = require('fs')
+const inquirer = require ('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
 
 
-const inquirer = require ('inquirer')
-const generalQuestions = [
+//questions to be answerd by user
+const questions = [
     {
         type: "input",
         name: "name",
-        message: "What's the employee's name?"
+        message: "What's the employee's name?",
     },
 
     {
         type: "input",
         name: "id",
-        message: "What's your Id"
+        message: "What's your Id",
     },
 
     {
         type: "input",
         name: "email",
-        message: "What's your E-mail?"
-    }
+        message: "What's your E-mail?",
+    },
 ]
 
 const managerQuestion = [
     {
         type: "input",
         name: "officeNumber",
-        message: "What's your office number?"
-    }
+        message: "What's your office number?",
+    },
 ]
 
 const engineerQuestion = [
@@ -58,7 +59,7 @@ function start() {
                 "Add an Engineer",
                 "Add an Intern",
                 "Add a Manager",
-                "Exit"
+                "Exit",
             ]
 
         }
@@ -80,7 +81,6 @@ function start() {
             }
         }
     )
-    
 }
 
 start()
@@ -89,7 +89,7 @@ start()
 
 //function to add an engineer
 function addEngineer() {
-
+    
 }
 //function to add an intern
 function addIntern() {
@@ -108,7 +108,7 @@ function addManager() {
 
 // import all the classes, engineer, intern and manager
 function init() {
-    return inquirer.prompt(generalQuestions)
+    return inquirer.prompt(questions)
     .then(function(data){
         console.log(data)
     //file name and data to be passed to the file 
