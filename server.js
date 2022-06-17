@@ -178,6 +178,11 @@ const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
 
 
+function start() {
+    return inquirer.prompt (
+        
+    )
+}
 
 
 // TODO: Create an array of questions for user input
