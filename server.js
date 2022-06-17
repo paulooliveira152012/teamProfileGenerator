@@ -173,12 +173,18 @@
 // __________
 
 // TODO: Include packages needed for this application
+// TODO: Include packages needed for this application
 const fs = require('fs')
 const inquirer = require('inquirer')
 const generateMarkdown = require('./utils/generateMarkdown')
+
+//constructures
 const Manager = require('./lib/Manager')
 const Engineer = require('./lib/Engineer')
+const Intern = require('./lib/Intern')
 
+// Array for answers
+var newStaffMember = [];
 
 function start() {
     inquirer.prompt([
@@ -232,8 +238,6 @@ function start() {
             }
         }
     )
-
-    var answers = []
 }
 // TODO: Create an array of questions for user input
 const questions = [
@@ -251,16 +255,15 @@ function addEngineer() {
     },
 ])
 .then(answers => {
-    const engineerAnswer = new Engineer(
-        answers.name, 
-        answers.id, 
-        answers.email, 
-        answers.github
-        );
-
-
-    }
-)
+            const engineerAnswer = new Engineer(
+                answers.name, 
+                answers.id, 
+                answers.email, 
+                answers.github
+            );
+            newStaffMember.push(engineerAnswer);
+        }
+    )
 }
 
 function addIntern() {
@@ -272,6 +275,16 @@ function addIntern() {
                 message: "What's the name of your School?"
             }
         ]
+    )
+    .then(answers => {
+            const internAnswers = new Intern(
+                answers.name, 
+                answers.id, 
+                answers.email, 
+                answers.school
+            );
+            newStaffMember.push(internAnswers);
+        }
     )
 }
 
@@ -285,6 +298,15 @@ function addManager() {
             }
         ]
     )
+    .then(answers => {
+        const managerAnswers = new Manager(
+            answers.name, 
+            answers.id, 
+            answers.email, 
+            answers.officeNumber
+        );
+        newStaffMember.push(managerAnswers);
+    })
 }
 
 
