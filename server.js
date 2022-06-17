@@ -214,7 +214,19 @@ function start() {
 
     .then (
         function(userInput){
-            
+            // console.log(userInput.choice)
+            if(userInput.choice === "Add an Engineer"){
+                addEngineer()
+            }
+            else if (userInput.choice === "Add an Intern"){
+                addIntern()
+            }
+            else if (userInput.choice === "Add a Manager"){
+                addManager()
+            }
+            else {
+                console.log("Thank you for Using out app")
+            }
         }
     )
 }
@@ -222,6 +234,19 @@ function start() {
 const questions = [
   
 ]
+
+function addEngineer() {
+    //prompt users with engineer based questions
+    
+}
+
+function addIntern() {
+
+}
+
+function addManager() {
+
+}
 
 
 // TODO: Create a function to initialize app
@@ -235,3 +260,5 @@ function init() {
 
 // Function call to initialize app
 init();
+
+start()
