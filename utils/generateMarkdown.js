@@ -12,7 +12,7 @@ function generateMarkdown(data) {
 <body>
     <ul>
         <li>${data.name}</li>
-        <li>${data.message}</li>
+        <li>${data.id}</li>
     </ul>
 </body>
 </html>`
