@@ -11,16 +11,26 @@ function generateMarkdown(data) {
     <title>Team Members</title>
 </head>
 <body>
-<h1>Welcome to the Team Profile Generator!</h1>
-<p>Below you will find the newest team members and thei's profiles</p>
-<p></p>
-    <ul>
-        <p>Name: ${data.name}</p>
-        <p>id: ${data.id}</p>
-        <p>e-mail:${data.email}</p>
-        <p>Title:${data.choice}</p>
-        <p>office Number:${data.officeNumber}</p>
-    </ul>
+<header>
+        <h1>List of staff members</h1>
+    </header>
+    <main>
+        <h2>Below you will find the newest team members and thei's profiles</h2>
+
+        <div class="container">
+            <div class="box">
+                <ul>
+                    <p>Name: ${data.name}</p>
+                    <p>id: ${data.id}</p>
+                    <p>e-mail:${data.email}</p>
+                    <p>Title:${data.choice}</p>
+                    <p>office Number:${data.officeNumber}</p> 
+                </ul>
+            </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>`
 }

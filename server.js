@@ -187,8 +187,6 @@ const Intern = require('./lib/Intern')
 var newStaffMember = [];
 
 function start() {
-    //trying to put user's input in this variable
-    var newMember = []
         inquirer.prompt([
             {
                 type: "input",
@@ -225,93 +223,122 @@ function start() {
 
     .then (
         function(userInput){
-            // console.log(userInput.choice)
+
+            console.log(userInput)
             if(userInput.choice === "Engineer"){
-                addEngineer()
+                addEngineer(userInput)
             }
             else if (userInput.choice === "Intern"){
-                addIntern()
+                addIntern(userInput)
             }
             else if (userInput.choice === "Manager"){
-                addManager()
+                addManager(userInput)
             }
             else {
                 console.log("Thank you for Using out app")
             }
             // fs.writeFileSync('./dist/index.html', generateMarkdown())
-            
+
         }
     )
 }
-// TODO: Create an array of questions for user input
-const questions = []
 
-function addEngineer() {
+function addEngineer(input) {
     //prompt users with engineer based questions
-
-    inquirer.prompt([
-        {
-        type: "input",
-        name: "github",
-        message: "What's their github account?",
-    },
-])
+    inquirer.prompt(
+        [
+            {
+                type: "input",
+                name: "github",
+                message: "What's their github account?",
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
+            }
+        ] 
+        
+    )
 .then(answers => {
+    console.log(answers)
             const engineerAnswer = new Engineer(
-                answers.name, 
-                answers.id, 
-                answers.email, 
+                input.name, 
+                input.id, 
+                input.email, 
                 answers.github
             );
             newStaffMember.push(engineerAnswer);
+            console.log(engineerAnswer)
+            
+            // run program again if user chooses yes 
+            if(userInput.choice === "yes"){
+                start()
+            }
             fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
+
         }
     )
 }
 
-function addIntern() {
+function addIntern(input) {
     inquirer.prompt(
         [
             {
                 type: "input",
                 name: "school",
                 message: "What's their school name?"
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
             }
         ]
     )
-    .then(answers => {
-            const internAnswers = new Intern(
-                answers.name, 
-                answers.id, 
-                answers.email, 
+.then(answers => {
+    console.log(answers)
+        const internAnswer = new Intern(
+                input.name, 
+                input.id, 
+                input.email, 
                 answers.school
             );
-            newStaffMember.push(internAnswers);
-            fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswers))
+            newStaffMember.push(internAnswer);
+            console.log(internAnswer)
+            fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswer))
         }
     )
 }
 
-function addManager() {
+function addManager(input) {
     inquirer.prompt(
         [
             {
                 type: "input",
                 name: "officeNumber",
                 message: "What's their office number?"
+            },
+            {
+                type: "list",
+                name: "choice",
+                message: "would you like to add a new staff member?",
+                choices: ["yes", "no",]
             }
         ]
     )
     .then(answers => {
-        const managerAnswers = new Manager(
-            answers.name,
-            answers.id, 
-            answers.email, 
+        const managerAnswer = new Manager(
+            input.name,
+            input.id, 
+            input.email, 
             answers.officeNumber,
             );
             newStaffMember.push(managerAnswers);
-            console.log(newStaffMember)
-            fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswers))
+            console.log(managerAnswers)
+            fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
         }
     )
 }
