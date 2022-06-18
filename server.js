@@ -187,62 +187,64 @@ const Intern = require('./lib/Intern')
 var newStaffMember = [];
 
 function start() {
-    inquirer.prompt([
-        {
-        type: "input",
-        name: "name",
-        message: "What's your name?",
-    },
+    //trying to put user's input in this variable
+    var newMember = []
+        inquirer.prompt([
+            {
+                type: "input",
+                name: "name",
+                message: "What's the staff member's name?",
+            },
 
 
-    {
-        type: "input",
-        name: "id",
-        message: "What's your Id",
-    },
+            {
+                type: "input",
+                name: "id",
+                message: "What's the staff member's Id",
+            },
 
-    {
-        type: "input",
-        name: "email",
-        message: "What's your E-mail?",
-    },
+            {
+                type: "input",
+                name: "email",
+                message: "What's the staff member's E-mail?",
+            },
 
-    {
-        type: "list",
-        name: "choice",
-        message: "What would you like to do?", 
-        choices: [
-            "Add an Engineer",
-            "Add an Intern",
-            "Add a Manager",
-            "Exit",
+            {
+                type: "list",
+                name: "choice",
+                message: "What'ts the staff member's role?", 
+                choices: [
+                    "Engineer",
+                    "Intern",
+                    "Manager",
+                    "Exit",
+                ]
+            }
         ]
-        }]
-
     )
 
     .then (
         function(userInput){
             // console.log(userInput.choice)
-            if(userInput.choice === "Add an Engineer"){
+            if(userInput.choice === "Engineer"){
                 addEngineer()
             }
-            else if (userInput.choice === "Add an Intern"){
+            else if (userInput.choice === "Intern"){
                 addIntern()
             }
-            else if (userInput.choice === "Add a Manager"){
+            else if (userInput.choice === "Manager"){
                 addManager()
             }
             else {
                 console.log("Thank you for Using out app")
             }
+            // fs.writeFileSync('./dist/index.html', generateMarkdown())
+            
         }
     )
 }
 // TODO: Create an array of questions for user input
-const questions = [
-  
-]
+const questions = []
 
 function addEngineer() {
     //prompt users with engineer based questions
@@ -251,7 +253,7 @@ function addEngineer() {
         {
         type: "input",
         name: "github",
-        message: "What's your github account?",
+        message: "What's their github account?",
     },
 ])
 .then(answers => {
@@ -262,6 +264,7 @@ function addEngineer() {
                 answers.github
             );
             newStaffMember.push(engineerAnswer);
+            fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
         }
     )
 }
@@ -272,7 +275,7 @@ function addIntern() {
             {
                 type: "input",
                 name: "school",
-                message: "What's the name of your School?"
+                message: "What's their school name?"
             }
         ]
     )
@@ -284,6 +287,7 @@ function addIntern() {
                 answers.school
             );
             newStaffMember.push(internAnswers);
+            fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswers))
         }
     )
 }
@@ -294,19 +298,22 @@ function addManager() {
             {
                 type: "input",
                 name: "officeNumber",
-                message: "What's your office number?"
+                message: "What's their office number?"
             }
         ]
     )
     .then(answers => {
         const managerAnswers = new Manager(
-            answers.name, 
+            answers.name,
             answers.id, 
             answers.email, 
-            answers.officeNumber
-        );
-        newStaffMember.push(managerAnswers);
-    })
+            answers.officeNumber,
+            );
+            newStaffMember.push(managerAnswers);
+            console.log(newStaffMember)
+            fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswers))
+        }
+    )
 }
 
 
