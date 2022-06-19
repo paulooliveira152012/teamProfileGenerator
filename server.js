@@ -219,6 +219,7 @@ function start() {
                 ]
             }
         ]
+        
     )
 
     .then (
@@ -262,24 +263,22 @@ function addEngineer(input) {
         
     )
 .then(answers => {
-    console.log(answers)
+    if(answers.choice === "yes") {
+        start()
+    } else {
             const engineerAnswer = new Engineer(
                 input.name, 
                 input.id, 
                 input.email, 
                 answers.github
             );
+            console.log("Thank you for Using out app")
             newStaffMember.push(engineerAnswer);
-            console.log(engineerAnswer)
-            
-            // run program again if user chooses yes 
-            if(userInput.choice === "yes"){
-                start()
-            }
-            fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
-
+        fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
         }
-    )
+    
+    }
+)
 }
 
 function addIntern(input) {
