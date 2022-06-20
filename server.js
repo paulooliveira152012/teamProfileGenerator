@@ -185,6 +185,8 @@ const Intern = require('./lib/Intern')
 
 // Array for answers
 var newStaffMember = [];
+var idArray = [];
+
 
 function start() {
         inquirer.prompt([
@@ -236,13 +238,22 @@ function start() {
                 addManager(userInput)
             }
             else {
-                console.log("Thank you for Using out app")
+                // console.log("Thank you for Using out app")
+                createTeam()
             }
             // fs.writeFileSync('./dist/index.html', generateMarkdown())
-
         }
     )
 }
+
+
+    function createTeam() {
+        console.log("One or more staff member(s) got added to the system")
+        fs.writeFile('index.html', template(newStaffMember), 'utf-8', err => err ? console.log(err) : console.log('HTML has been created'));
+      }
+
+
+
 
 function addEngineer(input) {
     //prompt users with engineer based questions
@@ -274,6 +285,8 @@ function addEngineer(input) {
             );
             console.log("Thank you for Using out app")
             newStaffMember.push(engineerAnswer);
+            console.log(newStaffMember);
+            idArray.push(answers.input);
         fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
         }
     
@@ -335,22 +348,22 @@ function addManager(input) {
             input.email, 
             answers.officeNumber,
             );
-            newStaffMember.push(managerAnswers);
-            console.log(managerAnswers)
+            newStaffMember.push(managerAnswer);
+            console.log(managerAnswer)
             fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
         }
     )
 }
 
 
-// TODO: Create a function to initialize app
-function init() {
-    return inquirer.prompt(questions)
-    .then(function(data){
-        console.log(data)
-        fs.writeFileSync('./dist/index.html', generateMarkdown(data))
-    })
-}
+// // TODO: Create a function to initialize app
+// function init() {
+//     return inquirer.prompt(questions)
+//     .then(function(data){
+//         console.log(data)
+//         fs.writeFileSync('./dist/index.html', generateMarkdown(data))
+//     })
+// }
 
 // Function call to initialize app
 // init();

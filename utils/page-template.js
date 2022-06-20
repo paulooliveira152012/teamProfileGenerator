@@ -1,3 +1,4 @@
+
 //function to generate markdown for html file
 function generateMarkdown(data) {
     return `# ${data.title}
