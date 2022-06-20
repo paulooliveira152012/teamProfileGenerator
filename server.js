@@ -185,8 +185,6 @@ const Intern = require('./lib/Intern')
 
 // Array for answers
 var newStaffMember = [];
-var idArray = [];
-
 
 function start() {
         inquirer.prompt([
@@ -243,7 +241,7 @@ function start() {
 
             }
             // fs.writeFileSync('./dist/index.html', generateMarkdown())
-            createTeam()
+            // createTeam()
         }
     )
 }
@@ -270,6 +268,13 @@ function addEngineer(input) {
     )
 .then(answers => {
     if(answers.choice === "yes") {
+        const engineerAnswer = new Engineer(
+            input.name, 
+            input.id, 
+            input.email, 
+            answers.github
+        );
+        newStaffMember.push(engineerAnswer);
         start()
     } else {
             const engineerAnswer = new Engineer(
@@ -278,12 +283,12 @@ function addEngineer(input) {
                 input.email, 
                 answers.github
             );
-            console.log("Thank you for Using out app")
             newStaffMember.push(engineerAnswer);
+            console.log("Thank you for Using out app")
             console.log(newStaffMember)
             // console.log(engineerAnswer);
-        fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
-        // createTeam()
+        // fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
+        createTeam()
         }
     }
 )
@@ -307,6 +312,13 @@ function addIntern(input) {
     )
 .then(answers => {
     if(answers.choice === "yes") {
+        const internAnswer = new Intern(
+            input.name, 
+            input.id, 
+            input.email, 
+            answers.school
+        );
+        newStaffMember.push(internAnswer);
         start()
     } else {  
         const internAnswer = new Intern(
@@ -315,14 +327,13 @@ function addIntern(input) {
                 input.email, 
                 answers.school
             );
-            console.log("Thank you for Using out app")
             newStaffMember.push(internAnswer);
+            console.log("Thank you for Using out app")
             console.log(newStaffMember)
             // console.log(internAnswer)
             // fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswer))
             createTeam()
             }
-  
         }
     )
 }
@@ -345,6 +356,13 @@ function addManager(input) {
     )
     .then(answers => {
         if(answers.choice === "yes") {
+            const managerAnswer = new Manager(
+                input.name,
+                input.id, 
+                input.email, 
+                answers.officeNumber,
+                );
+                newStaffMember.push(managerAnswer);
             start()
         } else {
             const managerAnswer = new Manager(
@@ -354,19 +372,19 @@ function addManager(input) {
                 answers.officeNumber,
                 );
                 newStaffMember.push(managerAnswer);
+                console.log("Thank you for Using out app")
                 console.log(newStaffMember)
                 // console.log(managerAnswer)
                 // fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
                 createTeam()
             }
-        
         }
     )
 }
 
 function createTeam() {
     console.log("One or more staff member(s) got added to the system")
-    // fs.writeFile('./dist/index.html', generateMarkdown(newStaffMember), console.log('HTML has been created'));
+    fs.writeFileSync('./dist/index.html', generateMarkdown(newStaffMember))
   }
 
 
