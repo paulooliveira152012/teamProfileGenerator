@@ -240,19 +240,13 @@ function start() {
             }
             else {
                 // console.log("Thank you for Using out app")
-                createTeam()
+
             }
             // fs.writeFileSync('./dist/index.html', generateMarkdown())
+            createTeam()
         }
     )
 }
-
-
-    function createTeam() {
-        console.log("One or more staff member(s) got added to the system")
-        fs.writeFile('index.html', template(newStaffMember), 'utf-8', err => err ? console.log(err) : console.log('HTML has been created'));
-      }
-
 
 
 
@@ -289,6 +283,7 @@ function addEngineer(input) {
             console.log(newStaffMember)
             // console.log(engineerAnswer);
         // fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
+        createTeam()
         }
     }
 )
@@ -325,6 +320,7 @@ function addIntern(input) {
             console.log(newStaffMember)
             // console.log(internAnswer)
             // fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswer))
+            createTeam()
             }
   
         }
@@ -361,12 +357,17 @@ function addManager(input) {
                 console.log(newStaffMember)
                 // console.log(managerAnswer)
                 // fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
+                createTeam()
             }
         
         }
     )
 }
 
+function createTeam() {
+    console.log("One or more staff member(s) got added to the system")
+    fs.writeFile('index.html', template(newStaffMember), 'utf-8', err => err ? console.log(err) : console.log('HTML has been created'));
+  }
 
 
 
