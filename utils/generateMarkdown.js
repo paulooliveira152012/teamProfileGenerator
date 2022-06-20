@@ -5,8 +5,8 @@ const createTeam = (member) => {
         return `
         <div class="container">
              <div class="box">
-                    <h2 class="title">${manager.getName()}</h2>
-                    <h2 class="title">${manager.getRole()}</h2>
+                    <h2 class="title">Name: ${manager.getName()}</h2>
+                    <h2 class="title">Role: ${manager.getRole()}</h2>
                  <ul>
                     <p>id: ${manager.getId()}</p>
                      <p>e-mail:${manager.getEmail()}</p>
@@ -22,8 +22,8 @@ const createTeam = (member) => {
         return `
         <div class="container">
              <div class="box">
-                    <h2 class="title">${engineer.getName()}</h2>
-                    <h2 class="title">${engineer.getRole()}</h2>
+                    <h2 class="title">Name: ${engineer.getName()}</h2>
+                    <h2 class="title">Role: ${engineer.getRole()}</h2>
                  <ul>
                     <p>id: ${engineer.getId()}</p>
                      <p>e-mail:${engineer.getEmail()}</p>
@@ -39,8 +39,8 @@ const createTeam = (member) => {
         return `
         <div class="container">
              <div class="box">
-                    <h2 class="title">${intern.getName()}</h2>
-                    <h2 class="title">${intern.getRole()}</h2>
+                    <h2 class="title">Name: ${intern.getName()}</h2>
+                    <h2 class="title">Role: ${intern.getRole()}</h2>
                  <ul>
                     <p>id: ${intern.getId()}</p>
                      <p>e-mail:${intern.getEmail()}</p>
@@ -78,7 +78,7 @@ const createTeam = (member) => {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Profile Generator</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../src/style.css">
 </head>
 <body>
     <header>
