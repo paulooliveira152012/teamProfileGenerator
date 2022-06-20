@@ -227,6 +227,7 @@ function start() {
     .then (
         function(userInput){
 
+            //first console log
             console.log(userInput)
             if(userInput.choice === "Engineer"){
                 addEngineer(userInput)
@@ -285,11 +286,10 @@ function addEngineer(input) {
             );
             console.log("Thank you for Using out app")
             newStaffMember.push(engineerAnswer);
-            console.log(newStaffMember);
-            idArray.push(answers.input);
-        fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
+            console.log(newStaffMember)
+            // console.log(engineerAnswer);
+        // fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
         }
-    
     }
 )
 }
@@ -311,16 +311,22 @@ function addIntern(input) {
         ]
     )
 .then(answers => {
-    console.log(answers)
+    if(answers.choice === "yes") {
+        start()
+    } else {  
         const internAnswer = new Intern(
                 input.name, 
                 input.id, 
                 input.email, 
                 answers.school
             );
+            console.log("Thank you for Using out app")
             newStaffMember.push(internAnswer);
-            console.log(internAnswer)
-            fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswer))
+            console.log(newStaffMember)
+            // console.log(internAnswer)
+            // fs.writeFileSync('./dist/index.html', generateMarkdown(internAnswer))
+            }
+  
         }
     )
 }
@@ -342,18 +348,26 @@ function addManager(input) {
         ]
     )
     .then(answers => {
-        const managerAnswer = new Manager(
-            input.name,
-            input.id, 
-            input.email, 
-            answers.officeNumber,
-            );
-            newStaffMember.push(managerAnswer);
-            console.log(managerAnswer)
-            fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
+        if(answers.choice === "yes") {
+            start()
+        } else {
+            const managerAnswer = new Manager(
+                input.name,
+                input.id, 
+                input.email, 
+                answers.officeNumber,
+                );
+                newStaffMember.push(managerAnswer);
+                console.log(newStaffMember)
+                // console.log(managerAnswer)
+                // fs.writeFileSync('./dist/index.html', generateMarkdown(managerAnswer))
+            }
+        
         }
     )
 }
+
+
 
 
 // // TODO: Create a function to initialize app
