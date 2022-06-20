@@ -282,8 +282,8 @@ function addEngineer(input) {
             newStaffMember.push(engineerAnswer);
             console.log(newStaffMember)
             // console.log(engineerAnswer);
-        // fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
-        createTeam()
+        fs.writeFileSync('./dist/index.html', generateMarkdown(engineerAnswer))
+        // createTeam()
         }
     }
 )
@@ -366,7 +366,7 @@ function addManager(input) {
 
 function createTeam() {
     console.log("One or more staff member(s) got added to the system")
-    fs.writeFile('index.html', template(newStaffMember), 'utf-8', err => err ? console.log(err) : console.log('HTML has been created'));
+    // fs.writeFile('./dist/index.html', generateMarkdown(newStaffMember), console.log('HTML has been created'));
   }
 
 

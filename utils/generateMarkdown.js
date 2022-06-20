@@ -53,18 +53,15 @@ const createTeam = (member) => {
 
     const file = []
 
-    file.push(member
-        .filter((teamMember) => teamMember.getRole() === "Engineer")
+    file.push(member.filter((teamMember) => teamMember.getRole() === "Engineer")
         .map((engineer) => newEngineer(engineer))
     )
 
-    file.push(member
-        .filter((teamMember) => teamMember.getRole() === "Intern")
+    file.push(member.filter((teamMember) => teamMember.getRole() === "Intern")
         .map((intern) => newIntern(intern))
     )
 
-    file.push(member
-        .filter((teamMember) => teamMember.getRole() === "Manager")
+    file.push(member.filter((teamMember) => teamMember.getRole() === "Manager")
         .map((manager) => newManager(manager))
     )
 
