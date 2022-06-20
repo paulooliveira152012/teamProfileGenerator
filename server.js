@@ -63,8 +63,7 @@ function start() {
                 addManager(userInput)
             }
             else {
-                // console.log("Thank you for Using out app")
-
+                console.log("Thank you for Using out app")
             }
         }
     )
