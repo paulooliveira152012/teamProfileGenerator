@@ -9,8 +9,8 @@ const createTeam = (member) => {
                     <h2 class="title">Role: ${manager.getRole()}</h2>
                  <ul>
                     <p>id: ${manager.getId()}</p>
-                     <p>e-mail:${manager.getEmail()}</p>
-                     <p>office Number:${manager.getOfficeNumber()}</p> 
+                     <p>e-mail: ${manager.getEmail()}</p>
+                     <p>office Number: ${manager.getOfficeNumber()}</p> 
                  </ul>
              </div>
             </div>
@@ -26,8 +26,8 @@ const createTeam = (member) => {
                     <h2 class="title">Role: ${engineer.getRole()}</h2>
                  <ul>
                     <p>id: ${engineer.getId()}</p>
-                     <p>e-mail:${engineer.getEmail()}</p>
-                     <p>office Number:${engineer.getGithub()}</p> 
+                     <p>e-mail: ${engineer.getEmail()}</p>
+                     <p>GitHub Account: ${engineer.getGithub()}</p> 
                  </ul>
              </div>
             </div>
@@ -43,8 +43,8 @@ const createTeam = (member) => {
                     <h2 class="title">Role: ${intern.getRole()}</h2>
                  <ul>
                     <p>id: ${intern.getId()}</p>
-                     <p>e-mail:${intern.getEmail()}</p>
-                     <p>office Number:${intern.getSchool()}</p> 
+                     <p>e-mail: ${intern.getEmail()}</p>
+                     <p>School: ${intern.getSchool()}</p> 
                  </ul>
              </div>
             </div>
